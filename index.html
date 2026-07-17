@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mahjong WWYD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <a href="add.html" class="nav-link-btn">➕ Add New Puzzles</a>
+
+        <div id="info-bar">
+            <span id="ui-situation">Loading...</span>
+            <span id="ui-dora-container" style="display: flex; align-items: center; gap: 8px;">
+                Dora: <img id="ui-dora-img" class="mahjong-tile ui-tile" src="" alt="dora" style="display: none;">
+            </span>
+        </div>
+
+        <div class="table-area">
+            <div id="hand-container" class="tile-row"></div>
+            <div id="draw-container" class="tile-row draw-gap"></div>
+        </div>
+
+        <button id="confirm-btn" class="hidden" onclick="confirmSelection()" style="background-color: #e67e22; margin-bottom: 20px;">Confirm Discard</button>
+
+        <div id="result-area" class="hidden">
+            <h2 id="result-title"></h2>
+            <p><strong>Correct Discard:</strong> <span id="res-correct"></span></p>
+            <p><strong>Shanten:</strong> <span id="res-shanten"></span> | <strong>Ukeire:</strong> <span id="res-waits"></span></p>
+            <p id="res-explanation" class="explanation-box"></p>
+            <button id="next-btn" onclick="nextPuzzle()">Next Puzzle</button>
+        </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

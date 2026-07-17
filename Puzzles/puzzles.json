@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "source": "301 \"Established Practice\" Which to cut? (wwyd-chan 2)",
+        "hand": "34567m 2388p 5779s",
+        "draw": "1p",
+        "dora": "3p",
+        "round": "East 1",
+        "seat": "West",
+        "turn": "8",
+        "correct_discard": "7s",
+        "shanten": "1",
+        "waits": "5s19 7s19 9s19",
+        "explanation": "The tile acceptance doesn't change no matter which souzu is cut. Fix the ryankan to increase the chances of Pinfu."
+    },
+    {
+        "id": 2,
+        "source": "301 \"Established Practice\" Which to cut? (wwyd-chan 2)",
+        "hand": "34567m 2388p 5779s",
+        "draw": "4p",
+        "dora": "3p",
+        "round": "East 1",
+        "seat": "West",
+        "turn": "8",
+        "correct_discard": "9s",
+        "shanten": "1",
+        "waits": "5s19 7s19 9s19",
+        "explanation": "Confirm Tanyao to increase the value, you can also call and open the hand if the situation requires it."
+    },
+    {
+        "id": 3,
+        "source": "301 \"Established Practice\" Which to cut? (wwyd-chan 2)",
+        "hand": "34567m 2388p 5779s",
+        "draw": "7s",
+        "dora": "3p",
+        "round": "East 1",
+        "seat": "West",
+        "turn": "8",
+        "correct_discard": "5s",
+        "shanten": "1",
+        "waits": "5s19 9s19",
+        "explanation": "The tile acceptance between 5s and 9s is the same. Keeping 5s lets you accept aka-5s, but you already have a 3-way wait on manzu and a 2-way wait on pinzu with dora. Fix 777s as a group and cut from the inside to keep the safer 9s for later."
+    }
+]

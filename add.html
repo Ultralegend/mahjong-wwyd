@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Add New Puzzles</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-container {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .suit-input {
+            display: flex;
+            align-items: center;
+        }
+        .suit-input input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .suit-input span {
+            background: #34495e;
+            color: white;
+            padding: 10px;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            font-weight: bold;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn-add { background: #3498db; }
+        .btn-download { background: #27ae60; }
+        .btn-clear { background: #e74c3c; color: white; }
+        #entry-count {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        <!-- Navigation back to main app -->
+        <a href="index.html" style="color: #3498db; text-decoration: none; display: block; margin-bottom: 15px;">&larr; Back to Quiz</a>
+
+        <div class="form-container">
+            <h2>Add New Puzzle</h2>
+            <form id="puzzle-form" autocomplete="off">
+                
+                <div class="form-group">
+                    <label>Source</label>
+                    <input type="text" id="inp-source" placeholder="e.g. Book Name, Page 42">
+                </div>
+
+                <!-- Hand Breakdown -->
+                <div class="form-group"><label>Hand (Type numbers only)</label></div>
+                <div class="form-row">
+                    <div class="form-group suit-input">
+                        <input type="text" id="inp-manzu" placeholder="e.g. 234"><span>m</span>
+                    </div>
+                    <div class="form-group suit-input">
+                        <input type="text" id="inp-pinzu" placeholder="e.g. 567"><span>p</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group suit-input">
+                        <input type="text" id="inp-souzu" placeholder="e.g. 2345"><span>s</span>
+                    </div>
+                    <div class="form-group suit-input">
+                        <input type="text" id="inp-honors" placeholder="e.g. 111"><span>z</span>
+                    </div>
+                </div>
+
+                <!-- Game State -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Draw</label>
+                        <input type="text" id="inp-draw" placeholder="e.g. 6s" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Dora</label>
+                        <input type="text" id="inp-dora" placeholder="e.g. 1z" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Round</label>
+                        <input type="text" id="inp-round" placeholder="e.g. East 1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Seat</label>
+                        <input type="text" id="inp-seat" placeholder="e.g. West" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Turn</label>
+                        <input type="number" id="inp-turn" placeholder="e.g. 6" required>
+                    </div>
+                </div>
+
+                <!-- Solution -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Answer (Discard)</label>
+                        <input type="text" id="inp-answer" placeholder="e.g. 2s" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Shanten</label>
+                        <input type="number" id="inp-shanten" placeholder="e.g. 1" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Waits (Ukeire)</label>
+                    <input type="text" id="inp-waits" placeholder="e.g. 5s19 7s19" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Explanation</label>
+                    <textarea id="inp-explanation" rows="3" placeholder="Explain the reasoning..." required></textarea>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="submit" class="btn-add">Add to List</button>
+                    <button type="button" class="btn-download" onclick="downloadCSV()">Download CSV</button>
+                    <button type="button" class="btn-clear" onclick="clearPuzzles()">Clear Puzzles</button>
+                </div>
+            </form>
+        </div>
+        <div id="entry-count">0 puzzles ready to download.</div>
+    </div>
+
+    <script src="add.js"></script>
+</body>
+</html>
