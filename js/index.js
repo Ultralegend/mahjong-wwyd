@@ -205,16 +205,6 @@ function confirmSelection() {
 function checkAnswer(selectedTile) {
     isAnswerRevealed = true;
     const resultArea = document.getElementById('result-area');
-    const resultTitle = document.getElementById('result-title');
-    
-    // Check answer correctness
-    if (selectedTile === currentPuzzle.correct_discard) {
-        resultTitle.innerText = "Correct! ✅";
-        resultTitle.style.color = "#27ae60"; 
-    } else {
-        resultTitle.innerText = "Incorrect ❌";
-        resultTitle.style.color = "#c0392b"; 
-    }
     
     // 1. Show the Correct Discard as an image
     document.getElementById('res-correct').innerHTML = 

@@ -123,6 +123,14 @@ body {
     border-radius: 8px;
 }
 
+#res-explanation {
+    margin: 10px 0px;
+}
+
+.answer-p {
+    margin: 2px;
+}
+
 .hidden {
     display: none;
 }
@@ -131,7 +139,6 @@ body {
     background: #bdc3c7;
     padding: 10px;
     border-left: 4px solid #e74c3c;
-    font-style: italic;
 }
 
 button {
