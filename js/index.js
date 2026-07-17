@@ -51,6 +51,44 @@ function parseHandString(handStr) {
     return tiles;
 }
 
+function getDoraIndicator(doraTile) {
+    if (!doraTile || doraTile.length < 2) return doraTile;
+    
+    let numStr = doraTile.charAt(0);
+    let suit = doraTile.charAt(1);
+    let indicatorNum;
+
+    // Numbered suits (Manzu, Pinzu, Souzu)
+    if (suit === 'm' || suit === 'p' || suit === 's') {
+        if (numStr === '0') {
+            indicatorNum = 4; // If actual dora is a Red 5, indicator is 4
+        } else {
+            let num = parseInt(numStr);
+            if (num === 1) {
+                indicatorNum = 9; // 1 wraps around to 9
+            } else {
+                indicatorNum = num - 1; // Standard -1 step
+            }
+        }
+    } 
+    // Honor tiles (Winds and Dragons)
+    else if (suit === 'z') {
+        let num = parseInt(numStr);
+        // Winds cycle: East(1) -> South(2) -> West(3) -> North(4) -> East(1)
+        if (num === 1) indicatorNum = 4;
+        else if (num === 2) indicatorNum = 1;
+        else if (num === 3) indicatorNum = 2;
+        else if (num === 4) indicatorNum = 3;
+        
+        // Dragons cycle: Haku(5) -> Hatsu(6) -> Chun(7) -> Haku(5)
+        else if (num === 5) indicatorNum = 7;
+        else if (num === 6) indicatorNum = 5;
+        else if (num === 7) indicatorNum = 6;
+    }
+
+    return indicatorNum + suit;
+}
+
 function loadPuzzle(index) {
     currentPuzzle = puzzles[index];
     
@@ -64,10 +102,44 @@ function loadPuzzle(index) {
     document.getElementById('ui-situation').innerText = 
         `${currentPuzzle.round}, ${currentPuzzle.seat} Seat, Turn ${currentPuzzle.turn}`;
         
-    // NEW: Render the Dora as an image
-    const doraImg = document.getElementById('ui-dora-img');
-    doraImg.src = `Assets/Regular-Tiles/${currentPuzzle.dora}.svg`;
-    doraImg.style.display = 'block';
+    // Render the Dead Wall (Dora Indicators)
+    const deadWallContainer = document.getElementById('dead-wall-container');
+    deadWallContainer.innerHTML = '';
+    
+    // Split the dora string into an array
+    const actualDoras = currentPuzzle.dora.trim().split(/\s+/).filter(Boolean);
+    const indicators = actualDoras.map(dora => getDoraIndicator(dora));
+    
+    // Calculate how many Rinshan (replacement) stacks have been completely drawn
+    // 1 extra indicator = 0 removed (bottom tile remains)
+    // 2 extra indicators = 1 removed (entire stack depleted)
+    const extraIndicators = indicators.length - 1;
+    const removedTilesCount = Math.floor(extraIndicators / 2);
+    
+    // Generate 7 tiles for the wall
+    for (let i = 0; i < 7; i++) {
+        if (i < removedTilesCount) {
+            // Render a hidden placeholder so the rest of the wall doesn't shift left
+            let div = document.createElement('div');
+            div.className = 'mahjong-tile ui-tile back-tile';
+            div.style.visibility = 'hidden'; 
+            deadWallContainer.appendChild(div);
+            
+        } else if (i >= 2 && i < 2 + indicators.length) {
+            // The face-up Dora indicators
+            let indicatorIndex = i - 2; 
+            let img = document.createElement('img');
+            img.className = 'mahjong-tile ui-tile';
+            img.src = `Assets/Regular-Tiles/${indicators[indicatorIndex]}.svg`;
+            deadWallContainer.appendChild(img);
+            
+        } else {
+            // Face-down CSS tiles
+            let div = document.createElement('div');
+            div.className = 'mahjong-tile ui-tile back-tile';
+            deadWallContainer.appendChild(div);
+        }
+    }
     
     // Parse and render the Hand
     const handContainer = document.getElementById('hand-container');
