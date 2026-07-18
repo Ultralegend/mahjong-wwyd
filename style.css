@@ -205,20 +205,36 @@ button {
 
 /* Batch Navigation Tabs */
 #batch-nav {
-    display: flex;
-    gap: 5px;
+    display: flex !important;
+    flex-direction: row !important; /* Forces elements side-by-side */
+    align-items: center;
+    gap: 8px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
+#batch-nav.hidden {
+    display: none !important;
+}
+
+#tabs-container {
+    display: flex !important;
+    flex-direction: row !important; /* Forces tabs side-by-side */
+    gap: 5px;
+}
+
+/* Tabs: Prevent stretching and overrides earlier 'flex: 1' */
 .tab-btn {
-    flex: 1;
-    padding: 12px;
+    width: auto !important; 
+    flex: none !important; 
+    padding: 6px 12px !important;
+    margin: 0 !important;
     background: #95a5a6;
     border: none;
     color: white;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .tab-btn.active {
@@ -228,9 +244,29 @@ button {
     transform: translateY(-2px);
 }
 
-#batch-nav.hidden {
-    display: none;
+/* Control Buttons: Force them to be small squares instead of 100% width bars */
+#btn-add-tab, #btn-remove-tab {
+    width: 30px !important; 
+    height: 30px !important; 
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Prevents them from being squished */
 }
+
+#btn-add-tab { background: #27ae60; }
+#btn-add-tab:active { background: #229954; }
+
+#btn-remove-tab { background: #e74c3c; }
+#btn-remove-tab:active { background: #c0392b; }
+#btn-remove-tab.hidden { display: none !important; }
 
 /* Hide arrows in Chrome, Safari, Edge, and Opera */
 input[type="number"]::-webkit-outer-spin-button,

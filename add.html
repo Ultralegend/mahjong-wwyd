@@ -77,13 +77,13 @@
             <h2>Add New Puzzle</h2>
             <div class="mode-toggle">
                 <label><input type="radio" name="entry-mode" value="single" checked onchange="toggleMode()"> Single Entry</label>
-                <label><input type="radio" name="entry-mode" value="batch" onchange="toggleMode()"> Batch (3 Puzzles/Page)</label>
+                <label><input type="radio" name="entry-mode" value="batch" onchange="toggleMode()"> Batch Mode</label>
             </div>
 
             <div id="batch-nav" class="hidden">
-                <button type="button" class="tab-btn active" onclick="switchTab(0)">Puzzle 1</button>
-                <button type="button" class="tab-btn" onclick="switchTab(1)">Puzzle 2</button>
-                <button type="button" class="tab-btn" onclick="switchTab(2)">Puzzle 3</button>
+                <div id="tabs-container"></div>
+                <button type="button" id="btn-add-tab" onclick="addTab()" title="Add a puzzle">➕</button>
+                <button type="button" id="btn-remove-tab" onclick="removeTab()" class="hidden" title="Remove current puzzle">🗑️</button>
             </div>
             <form id="puzzle-form" autocomplete="off" novalidate>
                 
