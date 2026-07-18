@@ -18,6 +18,7 @@ for index, row in df.iterrows():
     puzzle = {
         "id": int(row['ID']) if pd.notna(row['ID']) else index + 1,
         "source": get_val(row['Source']),
+        "qnum": get_val(row['Q-Num']),
         "hand": get_val(row['Hand']).strip(),
         "draw": get_val(row['Draw']).strip(),
         "dora": get_val(row['Dora']).strip(),
