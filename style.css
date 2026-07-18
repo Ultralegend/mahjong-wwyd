@@ -191,3 +191,43 @@ button {
     background-color: #2471a3; /* Darkens slightly when tapped */
     transform: translateY(2px); /* Presses down slightly */
 }
+
+/* Add Puzzle Mode Toggle */
+.mode-toggle {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    background: #bdc3c7;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* Batch Navigation Tabs */
+#batch-nav {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: #95a5a6;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.tab-btn.active {
+    background: #2c3e50;
+    font-weight: bold;
+    border: 2px solid #3498db;
+    transform: translateY(-2px);
+}
+
+#batch-nav.hidden {
+    display: none;
+}

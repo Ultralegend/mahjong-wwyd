@@ -75,7 +75,17 @@
 
         <div class="form-container">
             <h2>Add New Puzzle</h2>
-            <form id="puzzle-form" autocomplete="off">
+            <div class="mode-toggle">
+                <label><input type="radio" name="entry-mode" value="single" checked onchange="toggleMode()"> Single Entry</label>
+                <label><input type="radio" name="entry-mode" value="batch" onchange="toggleMode()"> Batch (3 Puzzles/Page)</label>
+            </div>
+
+            <div id="batch-nav" class="hidden">
+                <button type="button" class="tab-btn active" onclick="switchTab(0)">Puzzle 1</button>
+                <button type="button" class="tab-btn" onclick="switchTab(1)">Puzzle 2</button>
+                <button type="button" class="tab-btn" onclick="switchTab(2)">Puzzle 3</button>
+            </div>
+            <form id="puzzle-form" autocomplete="off" novalidate>
                 
                 <div class="form-group">
                     <label>Source</label>
@@ -151,9 +161,9 @@
                 </div>
 
                 <div class="action-buttons">
-                    <button type="submit" class="btn-add">Add to List</button>
-                    <button type="button" class="btn-download" onclick="downloadCSV()">Download CSV</button>
                     <button type="button" class="btn-clear" onclick="clearPuzzles()">Clear Puzzles</button>
+                    <button type="button" class="btn-download" onclick="downloadCSV()">Download CSV</button>
+                    <button type="submit" id="btn-submit" class="btn-add">Save Puzzle</button>
                 </div>
             </form>
         </div>
