@@ -35,7 +35,7 @@ function renderTabs() {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'tab-btn' + (index === currentTabIndex ? ' active' : '');
-        btn.innerText = `P${index + 1}`; // Changed from Puzzle to P
+        btn.innerText = `Puzzle ${index + 1}`;
         btn.onclick = () => switchTab(index);
         container.appendChild(btn);
     });
@@ -73,7 +73,7 @@ function removeTab() {
 
     // If the puzzle has data, ask for confirmation. If it's empty, skip this step.
     if (!isEmpty) {
-        const isConfirmed = confirm(`Are you sure you want to remove P${currentTabIndex + 1}?`);
+        const isConfirmed = confirm(`Are you sure you want to remove Puzzle ${currentTabIndex + 1}?`);
         if (!isConfirmed) return; // Stop if the user clicks Cancel
     }
     
@@ -230,7 +230,7 @@ document.getElementById('puzzle-form').addEventListener('submit', function(e) {
         for (let i = 0; i < batchData.length; i++) {
             const check = validatePuzzle(batchData[i]);
             if (!check.valid) {
-                alert(`P${i + 1} is incomplete!\n${check.error}`); // Changed from Puzzle to P
+                alert(`Puzzle ${i + 1} is incomplete!\n${check.error}`); // Changed from Puzzle to P
                 switchTab(i); 
                 return; 
             }
